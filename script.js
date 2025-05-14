@@ -1,8 +1,24 @@
-function mincost(arr)
-{ 
-//write your code here
-// return the min cost
-  
-}
+function mincost(arr) {
+  if (arr.length === 0) return 0;
+  const heap = [...arr];
+  let cost = 0;
+  heap.sort((a, b) => a - b);
 
-module.exports=mincost;
+  while (heap.length > 1) {
+    let first = heap.shift();
+    let second = heap.shift();
+
+    let newRope = first + second;
+    cost += newRope;
+    let index = heap.findIndex(val => val > newRope);
+    if (index === -1) {
+      heap.push(newRope);
+    } else {
+      heap.splice(index, 0, newRope);
+    }
+  }
+
+  return cost;
+}
+console.log(mincost([4, 3, 2, 6]));      
+console.log(mincost([1, 2, 3, 4, 5]));    
