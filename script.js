@@ -1,5 +1,6 @@
-function mincost(arr) {
-  if (arr.length === 0) return 0;
+function mincost(arr)
+{ 
+if (arr.length === 0) return 0;
   const heap = [...arr];
   let cost = 0;
   heap.sort((a, b) => a - b);
@@ -19,6 +20,7 @@ function mincost(arr) {
   }
 
   return cost;
+  
 }
-console.log(mincost([4, 3, 2, 6]));      
-console.log(mincost([1, 2, 3, 4, 5]));    
+
+module.exports=mincost;
